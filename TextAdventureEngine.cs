@@ -2,10 +2,13 @@ using System;
 
 public class TextAdventureEngine 
 {
+    //Temporary Main to Compile Delete Later
     public static void Main(string[] args)
     {
         CharacterFunctions.CharCreator();
     }
+    
+    //Defines Class Type
     public enum Classes
     {
         Fighter = 1,
@@ -14,6 +17,7 @@ public class TextAdventureEngine
         Ranger = 4
     }
     
+    //Defines Character type with various variables
     public class Character 
     {
         public int HP;
@@ -30,6 +34,7 @@ public class TextAdventureEngine
         public string QuestionText;
     }
     
+    //Contains Functions realted to Character Management, and Character Creation
     public class CharacterFunctions 
     {
         //Call this function to create a character, returns OutputCharacter of type Character
@@ -116,6 +121,54 @@ public class TextAdventureEngine
             
             
             return OutputCharacter;
+        }
+    }
+    
+    //Defines Monster type with various variables
+    public class Monster
+    {
+        public int HP;
+        public int AC;
+        public int Name;
+        public string Attack;
+    }
+    
+    //Contains Monster List 
+    //Later Convert to a Mark Up Language
+    public class MonsterList
+    {
+        Monster Goblin = new Monster();
+        //Goblin Stats
+            Goblin.HP = 5;
+            Goblin.AC = 8;
+            Goblin.Name = "Goblin";
+            public string Attack = "Scratch 4";
+    }
+    
+    //Combat Manager contains everything related to combat
+    public class CombatManager 
+    {
+        public static string StartCombat(Character character, Monster monster)
+        {
+            char[] AttackDelimiter = {' '};
+            public bool InCombat = true;
+            
+            while(InCombat)
+            {
+                //Get Character Attack
+                
+                //Do Character Attack
+                
+                //Check if Enemey Dead
+                
+                //Get Enemy Attack
+                
+                //Do Enemy Attack
+                
+                //Check if Enemy Dead
+                
+                //If one is dead return death message
+            }
         }
     }
 }
