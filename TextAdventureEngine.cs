@@ -5,7 +5,8 @@ public class TextAdventureEngine
     //Temporary Main to Compile Delete Later
     public static void Main(string[] args)
     {
-        CharacterFunctions.CharCreator();
+        Character Player = new Character();
+        Player = CharacterFunctions.CharCreator();
     }
     
     //Defines Class Type
@@ -26,10 +27,10 @@ public class TextAdventureEngine
         
         public Classes CharClass;
         
-        public string Move1;
-        public string Move2;
-        public string Move3;
-        public string Move4;
+        public Move Move1 = new Move();
+        public Move Move2 = new Move();
+        public Move Move3 = new Move();
+        public Move Move4 = new Move();
         
         public string QuestionText;
     }
@@ -62,13 +63,25 @@ public class TextAdventureEngine
             Character OutputCharacter = new Character();
             OutputCharacter = InputCharacter;
             
+            Console.WriteLine(OutputCharacter.CharClass);
             //Assigns stats if InputCharacter is a Fighter
-            if(InputCharacter.CharClass == Classes.Fighter)
+            if(OutputCharacter.CharClass == Classes.Fighter)
             {
-                OutputCharacter.Move1 = "SwordSlash 8 75";  
-                OutputCharacter.Move2 = "ShieldBash 4 60";
-                OutputCharacter.Move3 = "Rage 1000 20%";
-                OutputCharacter.Move4 = "Intimidate 0 40";
+                OutputCharacter.Move1.Name = "Sword Slash";
+                OutputCharacter.Move1.MaxDamage = 8;
+                OutputCharacter.Move1.ToHit = 75;
+                
+                OutputCharacter.Move2.Name = "Shield Bash";
+                OutputCharacter.Move2.MaxDamage = 4;
+                OutputCharacter.Move2.ToHit = 60;
+                
+                OutputCharacter.Move3.Name = "Rage";
+                OutputCharacter.Move3.MaxDamage = 1000;
+                OutputCharacter.Move3.ToHit = 20;
+                
+                OutputCharacter.Move4.Name = "Intimidate";
+                OutputCharacter.Move4.MaxDamage = 0;
+                OutputCharacter.Move4.ToHit = 40;
                 
                 OutputCharacter.QuestionText = "1:ShordSlash, 2: ShieldBash, 3:Rage 4: Intimidate";
                 
@@ -77,12 +90,25 @@ public class TextAdventureEngine
             }
             
             //Assigns stats if InputCharacter is a Rogue
-            if(InputCharacter.CharClass == Classes.Rogue)
+            if(OutputCharacter.CharClass == Classes.Rogue)
             {
-                OutputCharacter.Move1 = "Slice 8 75";  
-                OutputCharacter.Move2 = "PoisonThrow 4 80;
-                OutputCharacter.Move3 = "BackStab 1000 20%";
-                OutputCharacter.Move4 = "StealthDisengage 0 40";
+                OutputCharacter.Move1.Name = "Slice";
+                OutputCharacter.Move1.MaxDamage = 8;
+                OutputCharacter.Move1.ToHit = 75;
+                
+                OutputCharacter.Move2.Name = "Poison Throw";
+                OutputCharacter.Move2.MaxDamage = 4;
+                OutputCharacter.Move2.ToHit = 80;
+                
+                OutputCharacter.Move3.Name = "Back Stab";
+                OutputCharacter.Move3.MaxDamage = 1000;
+                OutputCharacter.Move3.ToHit = 20;
+                
+                OutputCharacter.Move4.Name = "Stealth Disengage";
+                OutputCharacter.Move4.MaxDamage = 0;
+                OutputCharacter.Move4.ToHit = 40;
+                
+                
                 
                 OutputCharacter.QuestionText = "1:Slice, 2: PoisonThrow, 3:BackStab 4: StealthDisengage";
                 
@@ -91,12 +117,23 @@ public class TextAdventureEngine
             }
             
             //Assigns stats if InputCharacter is a Mage
-            if(InputCharacter.CharClass == Classes.Mage)
+            if(OutputCharacter.CharClass == Classes.Mage)
             {
-                OutputCharacter.Move1 = "FireBall 10 50";  
-                OutputCharacter.Move2 = "FrostBolt 8 60";
-                OutputCharacter.Move3 = "UnholyDevastation 1000 20%";
-                OutputCharacter.Move4 = "Teleport 0 40";
+                OutputCharacter.Move1.Name = "Fire Ball";
+                OutputCharacter.Move1.MaxDamage = 10;
+                OutputCharacter.Move1.ToHit = 50;
+                
+                OutputCharacter.Move2.Name = "Frost Bolt";
+                OutputCharacter.Move2.MaxDamage = 8;
+                OutputCharacter.Move2.ToHit = 60;
+                
+                OutputCharacter.Move3.Name = "Unholy Devastation";
+                OutputCharacter.Move3.MaxDamage = 1000;
+                OutputCharacter.Move3.ToHit = 20;
+                
+                OutputCharacter.Move4.Name = "Teleport";
+                OutputCharacter.Move4.MaxDamage = 0;
+                OutputCharacter.Move4.ToHit = 40;
                 
                 OutputCharacter.QuestionText = "1:FireBall, 2:FrostBolt, 3:UnholyDevastation 4:Teleport";
                 
@@ -105,23 +142,36 @@ public class TextAdventureEngine
             }
             
             //Assigns stats if InputCharacter is a Ranger
-            if(InputCharacter.CharClass == Classes.Ranger)
+            if(OutputCharacter.CharClass == Classes.Ranger)
             {
-                OutputCharacter.Move1 = "SwordSlash 8 75";  
-                OutputCharacter.Move2 = "ShieldBash 4 60";
-                OutputCharacter.Move3 = "Rage 1000 20%";
-                OutputCharacter.Move4 = "Intimidate 0 40";
+                OutputCharacter.Move1.Name = "Bow Shot";
+                OutputCharacter.Move1.MaxDamage = 8;
+                OutputCharacter.Move1.ToHit = 50;
                 
-                OutputCharacter.QuestionText = "1:ShordSlash, 2: ShieldBash, 3:Rage 4: Intimidate";
+                OutputCharacter.Move2.Name = "Entangle";
+                OutputCharacter.Move2.MaxDamage = 4;
+                OutputCharacter.Move2.ToHit = 60;
                 
-                OutputCharacter.AC = 15;
-                OutputCharacter.HP = 10;
+                OutputCharacter.Move3.Name = "Tree Curse";
+                OutputCharacter.Move3.MaxDamage = 1000;
+                OutputCharacter.Move3.ToHit = 20;
+                
+                OutputCharacter.Move4.Name = "Stealth Escape";
+                OutputCharacter.Move4.MaxDamage = 0;
+                OutputCharacter.Move4.ToHit = 40;
+                
+                OutputCharacter.QuestionText = "1:BowShot, 2:Entangle, 3:TreeCurse 4:StealthEscape";
+                
+                OutputCharacter.AC = 5;
+                OutputCharacter.HP = 7;
             }
             
             
             
             return OutputCharacter;
         }
+        
+        
     }
     
     //Defines Monster type with various variables
@@ -130,19 +180,22 @@ public class TextAdventureEngine
         public int HP;
         public int AC;
         public int Name;
-        public string Attack;
+        public string AttackName;
+        public string AttackToHit;
+        public string AttackDamageMax;
     }
     
+    public class Move 
+    {
+        public string Name;
+        public int ToHit;
+        public int MaxDamage;
+    }
     //Contains Monster List 
     //Later Convert to a Mark Up Language
     public class MonsterList
     {
-        Monster Goblin = new Monster();
-        //Goblin Stats
-            Goblin.HP = 5;
-            Goblin.AC = 8;
-            Goblin.Name = "Goblin";
-            public string Attack = "Scratch 4";
+      
     }
     
     //Combat Manager contains everything related to combat
@@ -151,11 +204,16 @@ public class TextAdventureEngine
         public static string StartCombat(Character character, Monster monster)
         {
             char[] AttackDelimiter = {' '};
-            public bool InCombat = true;
+            bool InCombat = true;
+            int MoveChosen;
             
             while(InCombat)
             {
-                //Get Character Attack
+                Console.WriteLine("HP: " + character.HP);
+                Console.WriteLine("Monster HP: " + monster.HP);
+                Console.WriteLine("Choose Move: " + character.QuestionText);
+                
+                MoveChosen = Int32.Parse(Console.ReadLine());
                 
                 //Do Character Attack
                 
@@ -168,7 +226,9 @@ public class TextAdventureEngine
                 //Check if Enemy Dead
                 
                 //If one is dead return death message
+                return "Done";
             }
+            return "Done";
         }
     }
 }
