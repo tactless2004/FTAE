@@ -7,19 +7,14 @@ public class TextAdventureEngine
     public static void Main(string[] args)
     {
         
-         Monster Goblin = new Monster();
-            Goblin.HP = 5;
-            Goblin.AC = 7;
-            Goblin.Name = "Goblin";
-            Goblin.MonsterMove1.Name = "Slash";
-            Goblin.MonsterMove1.MaxDamage = 4;
-        
+        Monster Goblin = new Monster();
+        Goblin = InitMonster.GoblinMonster();
         Character Player = new Character();
         Player = CharacterFunctions.CharCreator();
         
         Console.WriteLine("Bloise:Im going to run you through some example combat to get you used to the system");
         
-        CombatManager.StartCombat(Player, Goblin);
+        Console.WriteLine(CombatManager.StartCombat(Player, Goblin));
     }
     
     //Defines Class Type
@@ -48,6 +43,19 @@ public class TextAdventureEngine
         public string QuestionText;
     }
     
+    public class InitMonster 
+    {
+        public static Monster GoblinMonster()
+        {
+            Monster Goblin = new Monster();
+            Goblin.HP = 5;
+            Goblin.AC = 7;
+            Goblin.Name = "Goblin";
+            Goblin.MonsterMove1.Name = "Slash";
+            Goblin.MonsterMove1.MaxDamage = 4;
+            return Goblin;
+        }
+    }
     //Contains Functions realted to Character Management, and Character Creation
     public class CharacterFunctions 
     {
@@ -219,13 +227,15 @@ public class TextAdventureEngine
             //intergers used to for AC
                 int ToHit;
                 int CalculatedDamage;
-            //Combat Runner 
-            while(InCombat)
-            {
+                
+            //Info Text for Player
                 Console.WriteLine("HP: " + PlayerHP);
                 Console.WriteLine("-------------------- ");
                 Console.WriteLine("Monster HP: " + MonsterHP);
                 Console.WriteLine(" ");
+            //Combat Runner
+            while(InCombat)
+            {
                 Console.WriteLine("Choose Move: " + character.QuestionText);
                 
                 MoveChosen = Int32.Parse(Console.ReadLine());
@@ -255,6 +265,7 @@ public class TextAdventureEngine
                 {
                     CalculatedDamage = RNG.Next(1, CurrentMove.MaxDamage);
                     MonsterHP-=CalculatedDamage;
+                    Console.WriteLine(PlayerName + " did " + CalculatedDamage + " to " + MonsterName);
                 }
                 
                 if(MonsterHP<=0)
@@ -272,7 +283,8 @@ public class TextAdventureEngine
                 if(ToHit>=PlayerAC)
                 {
                    CalculatedDamage = RNG.Next(1, CurrentMove.MaxDamage);
-                   PlayerHP-=CalculatedDamage; 
+                   PlayerHP-=CalculatedDamage;
+                   Console.WriteLine(MonsterName + " did " + CalculatedDamage + " to " + PlayerName);
                 }
                 
                 if(PlayerHP<=0)
